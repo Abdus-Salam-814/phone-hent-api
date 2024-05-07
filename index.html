@@ -28,7 +28,7 @@
     <nav >
         <div class="navbar bg-base-100">
             <div class="flex-1">
-              <a class="btn btn-ghost text-xl">Hot Gadgets</a>
+              <a class="btn btn-ghost text-xl" href="index.html">Hot Gadgets</a>
             </div>
             <div class="flex-none">
               <button class="btn btn-primary poppins-extrabold">Sin Up </button>
@@ -39,21 +39,36 @@
    <div id="carousel-container" class="flex items-center justify-center mx-auto bg-sky-100 rounded-md p-2 "">
 
    </div>
+
+
     <!-- Search input  contener -->
-    <label class="input input-bordered flex items-center gap-2 my-6 w-2/5">
+    <label class="input input-bordered flex items-center gap-2 my-6 md:w-2/5">
         <input id="search-fild" type="text" class="grow" placeholder="Search" />
         <button onclick="handelSearch()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg></button>
       </label>
   </header>
     <main>
+      <div>
+        <p class="w-5/6 my-9 mx-auto bg-yellow-50 p-4 font-extrabold text-center" id="warning-massege"></p>
+      </div>
       <!--Phone Card SEction Stearted here-->
      <section class="w-5/6 mx-auto">
+
+      <div id="loading-spinner" class="text-center hidden">
+      <span class="loading text-pretty loading-spinner loading-lg "></span>
+      </div>
+
+
       <div id="phones-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       </div>
      </section>
+
+
+
+     
       <!--Phone Card SEction Ends here-->
      <!-- Show All -->
-     <div id="show-all" class="text-center mt-6">
+     <div id="show-all-caontainer" class="text-center mt-6 hidden">
       <button class="btn btn-wide btn-primary text-white" >Show All</button>
      </div>
 

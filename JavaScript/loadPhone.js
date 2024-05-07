@@ -14,8 +14,44 @@ const phonesCardContainer = document.getElementById('phones-card-container');
 // clear carde container 
 phonesCardContainer.innerHTML = '';
 
+
+// Show All buttonn hidden and show
+const showAllContainer = document.getElementById('show-all-caontainer');
+
+console.log(phones.length)
+
+if(phones.length > 12){
+    showAllContainer.classList.remove('hidden');
+}else{
+    showAllContainer.classList.add('hidden');
+
+}
+
+// Search phone not Found 
+
+if(phones.length == 0 ){
+    const searchFildElement = document.getElementById('search-fild');
+    const searchText = searchFildElement.value;
+    const warningMess = document.getElementById('warning-massege');
+    warningMess.innerText = `You searched by typing.... "${searchText}".
+     We're Sorry. We Were not able to find a match.
+    
+    Try Another Search.`
+}else{
+    
+    
+    const warningMess = document.getElementById('warning-massege');
+    const searchFildElement = document.getElementById('search-fild');
+    const searchText = searchFildElement.value;
+    warningMess.innerText = ` Find match Result is ${phones.length}`
+
+}
+
 // display only first 12 phone 
 phones = phones.slice(0,12);
+
+
+
 
 phones.forEach(phone => {
  console.log(phone)  
@@ -42,6 +78,11 @@ phonesCardContainer.appendChild(phoneCard)
 // ======================Step 4: append child Ends===================
  
 });
+
+// hide loading Spiner
+toggleLoadingSpinner(false);
+
+
 }
 
 
@@ -50,10 +91,23 @@ phonesCardContainer.appendChild(phoneCard)
 // step: 5: Search Fild added
 
 const handelSearch = () =>{
-    //  console.log('clecked heare')
+    toggleLoadingSpinner(true);
     const searchFildElement = document.getElementById('search-fild');
     const searchText = searchFildElement.value;
     loadPhone(searchText);
+    
 }
+
+const toggleLoadingSpinner = (isLoading) =>{
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if(isLoading){
+    loadingSpinner.classList.remove('hidden');
+        
+    }else{
+        loadingSpinner.classList.add('hidden');
+
+    }
+}
+
 
 loadPhone("samsung");
