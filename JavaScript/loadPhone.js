@@ -13,12 +13,16 @@ const displayPhones = phones =>{
 const phonesCardContainer = document.getElementById('phones-card-container');
 // clear carde container 
 phonesCardContainer.innerHTML = '';
+
+// display only first 12 phone 
+phones = phones.slice(0,12);
+
 phones.forEach(phone => {
  console.log(phone)  
  //Step 2: Create a div
 const phoneCard = document.createElement('div');
 
-phoneCard.classList = 'card  bg-base-100 shadow-xl rounded-2xl m-4 bg-sky-100';
+phoneCard.classList = 'card  bg-base-100 shadow-xl rounded-2xl m-2 bg-sky-100';
 //=============Step 2: Create a div Ends=================
 // Step 3: set iner html
 phoneCard.innerHTML = `
