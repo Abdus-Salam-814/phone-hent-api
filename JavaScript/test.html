@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Inner HTML</title>
+</head>
+<body>
+    <div id="myElement">Old Inner HTML</div>
+
+    <script>
+        function setInnerHTML() {
+            // Get the element
+            var element = document.getElementById("myElement");
+            
+            // Set the inner HTML
+            element.innerHTML = "New Inner HTML";
+        }
+        
+        // Call the function to set inner HTML
+        setInnerHTML();
+    </script>
+</body>
+</html>
