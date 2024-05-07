@@ -10,7 +10,7 @@ function carosolData(data) {
     
     // Set the inner HTML
     element.innerHTML = `
-    <div id="carouselExampleDark" class=" w-2/5 mx-auto carousel carousel-dark slide  " data-bs-ride="carousel">
+    <div id="carouselExampleDark" class=" max-h-96 w-72 mx-auto carousel carousel-dark slide  " data-bs-ride="carousel">
     <div  class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>

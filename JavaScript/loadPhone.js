@@ -51,3 +51,5 @@ const handelSearch = () =>{
     const searchText = searchFildElement.value;
     loadPhone(searchText);
 }
+
+loadPhone("samsung");
