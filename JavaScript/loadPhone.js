@@ -1,4 +1,4 @@
-const loadPhone = async (searchText, isShowAll) =>{
+const loadPhone = async (searchText="12", isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
 
     const data = await res.json();
@@ -42,9 +42,9 @@ if(phones.length == 0 ){
 // Show All buttonn hidden and show
 const showAllContainer = document.getElementById('show-all-caontainer');
 
-console.log(phones.length)
+// console.log(phones.length)
 
-if(phones.length > 12 && !isShowAll){
+if(phones.length > 14 && !isShowAll){
     showAllContainer.classList.remove('hidden');
 }else{
     showAllContainer.classList.add('hidden');
@@ -53,7 +53,7 @@ if(phones.length > 12 && !isShowAll){
 
 
 // is show All
-console.log('is Show all', isShowAll)
+// console.log('is Show all', isShowAll)
 // display only first 12 phone 
 if(!isShowAll){
  phones = phones.slice(0,12);
@@ -63,7 +63,7 @@ if(!isShowAll){
 
 
 phones.forEach(phone => {
- console.log(phone)  
+//  console.log(phone)  
  //Step 2: Create a div
 const phoneCard = document.createElement('div');
 
@@ -75,9 +75,12 @@ phoneCard.innerHTML = `
                 <div class="card-body text-center  ">
                 <h2 class=" font-extrabold text-2xl text-center">${phone.phone_name}</h2>
                 <p class="font-semibold">Brand: ${phone.brand}</p>
-                <p> <span class="font-bold">ID:</span> ${phone.slug}</p>
+                <p> There are many variations of
+                passages of available, but the
+                majority have suffered</p>
                 <div class="card-actions justify-center">
-                <button class="btn btn-primary">Show Details</button>
+                <button onclick="handelShowDetails('${phone.slug}'); show_details_modal.showModal()" class="btn btn-primary">Show Details</button>
+
                 </div>
             </div>       
 `
@@ -123,9 +126,59 @@ const handelShowAll = () =>{
     handelSearch(true);
 }
 
+// Show details
+const handelShowDetails = async (id) =>{
+//    console.log('show deatls',id )
+
+   // load single data
+ const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+ const data = await res.json();
+//  console.log(data)
+const phone = data;
+
+showPhoneDetails(phone);
+}
+
+const showPhoneDetails = (phone) =>{
+
+    // console.log(phone);
+const showDetailsModulContainer = document.getElementById('show-details-container');
+
+showDetailsModulContainer.innerHTML = `
+<div class="bg-blue-300 rounded-xl" >
+  <figure class="px-10 pt-10 flex justify-center content-center bg-white p-4 rounded-xl shadow-lg">
+    <img class="rounded-md" src="${phone.data.image}" />
+  </figure>
+  <div class="card-body items-center text-center ">
+    <h2 class="card-title">${phone?.data?.name}</h2>
+    <p>It is a long established fact that a reader will be distracted by the readable content
+    of a page when looking at its layout. </p>
+    <div class="text-start mb-5">
+    <h4 > <span class = "font-extrabold">Storage:</span> ${phone?.data?.mainFeatures?.storage } </h4>
+    <h4 > <span class = "font-extrabold">DisplaySize:</span> ${phone?.data?.mainFeatures?.displaySize } </h4>
+    <h4 > <span class = "font-extrabold">Chip Set:</span> ${phone?.data?.mainFeatures?.chipSet} </h4>
+    <h4 > <span class = "font-extrabold">Memory:</span> ${phone?.data?.mainFeatures?.memory} </h4>
+    <h4 > <span class = "font-extrabold">Release Date:</span> ${phone?.data?.releaseDate} </h4>
+    <h4 > <span class = "font-extrabold">Brand:</span> ${phone?.data?.brand} </h4>
+    <h4 > <span class = "font-extrabold">GPS:</span> ${phone?.data?.others?.GPS} </h4>
+    </div>
+    <div class="card-actions">
+      <button class="btn btn-primary btn-wide disabled:opacity-75 ">Buy Now</button>
+    </div>
+  </div>
+</div>
+`
+console.log(phone);
+console.log(phone?.data?.mainFeatures?.storage    );
+
+// show the modal
+show_details_modal.showModal()
+
+}
 
 
 
+loadPhone();
 
 
-loadPhone("samsung");
+
